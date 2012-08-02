@@ -29,4 +29,13 @@
     (float
      (math/abs (- hr-angle min-angle)))))
 
+(defn word-frequencies
+  ^{:doc "My implementation of the Clojure 'frequency' function. Takes in a sentence (string) and outputs a map with words as keys and their frequency as values."}
+  [sentence]
+  (reduce
+   (fn [res wrd] (assoc res wrd
+                       (inc (get res wrd 0))))
+   {}
+   (re-seq #"\w+" sentence)))
+
 

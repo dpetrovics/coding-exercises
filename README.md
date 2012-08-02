@@ -5,4 +5,10 @@ Coding exercises, handy practice for technical interview questions. I will put u
 
 All of the exercises are coded in my favorite language, Clojure.
 
-Most of the exercises are taken from "Cracking the Coding Interview, 4th Edition, by Gayle Laakmann.
+Most of the exercises are taken from "Cracking the Coding Interview, 4th Edition" by Gayle Laakmann.
+
+## License
+
+Copyright (C) 2012 David Petrovics
+
+Distributed under the Eclipse Public License, the same as Clojure.
