@@ -18,6 +18,21 @@
   (map first
        (iterate (fn [[a b]] [b (+ a b)]) [0 1])))
 
+(def map-example
+  "You have a collection of 2-tuples (user, follower). You want to get out (user, [followers]). Solution: put them all into a map, and use merge-with.")
+
+(def inputs
+  '(("Angie" "Dave") ("Angie" "Max") ("Bill" "Joe") ("Joe" "Moe") ("Bill" "Dave") ("Mike" "Dave") ("Angie" "Bill")))
+
+(defn user-followers
+  [uf-list]
+  (let [usr-map (map #(apply hash-map %1) uf-list)]
+    (apply merge-with
+           #(if (seq? %1)
+              (conj %1 %2)
+              (list %1 %2))
+           usr-map)))
+
 (defn clock-angle
   ^{:doc "Finds the angle in degrees between the hour hand and minute hand."}
   [hr min]
@@ -39,3 +54,6 @@
    (re-seq #"\w+" sentence)))
 
 
+(defn power [base exp]
+  (nth
+   (iterate #(* %1 base) 1) exp))
