@@ -12,3 +12,4 @@ Most of the exercises are taken from "Cracking the Coding Interview, 4th Edition
 Copyright (C) 2012 David Petrovics
 
 Distributed under the Eclipse Public License, the same as Clojure.
+

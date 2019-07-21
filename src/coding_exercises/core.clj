@@ -1,6 +1,4 @@
-(ns coding-exercises.core
-  (:require [clojure.string :as str]
-            [clojure.math.numeric-tower :as math]))
+(ns coding-exercises.core)
 
 (defn basic-fib
   ^{:doc "Returns the n-th number in the fibonacci sequence."}
@@ -33,16 +31,16 @@
               (list %1 %2))
            usr-map)))
 
-(defn clock-angle
-  ^{:doc "Finds the angle in degrees between the hour hand and minute hand."}
-  [hr min]
-  (assert (and (< min 60) (>= min 0)) "invalid minute")
-  (let [min-angle (* min
-                     (/ 360 60))
-        hr-angle (* (+ (mod hr 12) (/ min 60))
-                    (/ 360 12))]
-    (float
-     (math/abs (- hr-angle min-angle)))))
+;(defn clock-angle
+;  ^{:doc "Finds the angle in degrees between the hour hand and minute hand."}
+;  [hr min]
+;  (assert (and (< min 60) (>= min 0)) "invalid minute")
+;  (let [min-angle (* min
+;                     (/ 360 60))
+;        hr-angle (* (+ (mod hr 12) (/ min 60))
+;                    (/ 360 12))]
+;    (float
+;     (math/abs (- hr-angle min-angle)))))
 
 (defn word-frequencies
   ^{:doc "My implementation of the Clojure 'frequency' function. Takes in a sentence (string) and outputs a map with words as keys and their frequency as values."}
@@ -53,7 +51,28 @@
    {}
    (re-seq #"\w+" sentence)))
 
-
 (defn power [base exp]
   (nth
    (iterate #(* %1 base) 1) exp))
+
+(defn multiple?
+  [n number]
+  (zero? (mod n number)))
+
+;(defn fizz-buzz [number]
+;  "Write a program that prints the numbers from 1 to 100.  But for
+;   multiples of three print \"Fizz\" instead of the number and for the
+;   multiples of five print \"Buzz\". For numbers which are multiples of
+;   both three and five print \"FizzBuzz\""
+;   ())
+
+(defn fizz-buzz 
+  [number]
+  (let [res (str 
+              (if (multiple? number 3) "Fizz")
+              (if (multiple? number 5)
+                "Buzz"))]
+    (if (clojure.string/blank? res)
+      (str number)
+      res)))
+
